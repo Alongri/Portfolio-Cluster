@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "flask-app.fullname" . }}
+  labels:
+    app: {{ include "flask-app.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "flask-app.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "flask-app.name" . }}
+    spec:
+      containers:
+        - name: flask
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGO_HOST
+              value: "{{ .Values.env.MONGO_HOST }}"
+            - name: MONGO_PORT
+              value: "{{ tpl (printf "%v" .Values.env.MONGO_PORT) . }}"
+            - name: MONGO_DB
+              value: "{{ .Values.env.MONGO_DB }}"
+          livenessProbe: 
+{{ toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe: 
+{{ toYaml .Values.readinessProbe | nindent 12 }}
+          resources: 
+{{ toYaml .Values.resources | nindent 12 }}
+

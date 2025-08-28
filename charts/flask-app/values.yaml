@@ -1,0 +1,42 @@
+replicaCount: 2
+
+image:
+  repository: 884394270539.dkr.ecr.ap-south-1.amazonaws.com/development/excel_uploader
+  tag: 1.0.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 5000
+
+resources: {}
+
+env:
+  MONGO_HOST: "portfolio-mongodb-chart-mongodb"
+  MONGO_PORT: 27017
+  MONGO_DB: "flaskdb"
+
+ingress:
+  enabled: true
+  hosts:
+    - host: myportfolio.dbloader.com
+      paths:
+        - path: /
+          pathType: Prefix
+  ingressClassName: nginx
+
+# Liveness / readiness
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 5000
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /health
+    port: 5000
+  initialDelaySeconds: 10
+  periodSeconds: 5
+

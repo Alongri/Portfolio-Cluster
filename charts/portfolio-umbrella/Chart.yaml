@@ -1,0 +1,14 @@
+apiVersion: v2
+name: portfolio-umbrella
+version: 0.1.0
+type: application
+description: Umbrella chart for Flask + MongoDB
+
+dependencies:
+  - name: mongodb-chart
+    version: 0.1.0
+    repository: "file://../mongodb-chart"
+  - name: flask-app
+    version: 0.1.0
+    repository: "file://../flask-app"
+

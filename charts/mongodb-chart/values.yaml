@@ -1,0 +1,12 @@
+mongodb:
+  architecture: replicaset
+  auth:
+    enabled: true
+    rootPassword: "MyRootPassword123"
+    username: "appuser"
+    password: "admin123"
+    database: "flaskdb"
+  persistence:
+    size: 8Gi
+    storageClass: "ebs-csi-gp3"
+

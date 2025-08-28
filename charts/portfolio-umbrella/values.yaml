@@ -1,0 +1,24 @@
+flask-app:
+  env:
+    MONGO_HOST: "portfolio-mongodb-chart-mongodb"
+  image:
+    repository: 884394270539.dkr.ecr.ap-south-1.amazonaws.com/development/excel_uploader
+    tag: "1.0.0"
+  ingress:
+    enabled: true
+    hosts:
+      - host: myportfolio.dbloader.com
+        paths:
+          - path: /
+            pathType: Prefix
+
+mongodb-chart:
+  mongodb:
+    auth:
+      rootPassword: "MyRootPassword123"
+      username: "appuser"
+      password: "admin123"
+      database: "flaskdb"
+    persistence:
+      storageClass: "ebs-csi-gp3"
+
