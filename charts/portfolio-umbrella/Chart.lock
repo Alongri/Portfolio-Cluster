@@ -1,0 +1,9 @@
+dependencies:
+- name: mongodb-chart
+  repository: file://../mongodb-chart
+  version: 0.1.0
+- name: flask-app
+  repository: file://../flask-app
+  version: 0.1.0
+digest: sha256:62e2dbc1aa21b15edfb4d6b4111387f82eb3742ae3524c6d837b467dddbc40af
+generated: "2025-08-29T13:23:00.518179728+03:00"
