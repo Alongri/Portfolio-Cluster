@@ -3,7 +3,7 @@ flask-app:
     MONGO_HOST: "portfolio-mongodb-chart-mongodb"
   image:
     repository: 884394270539.dkr.ecr.ap-south-1.amazonaws.com/development/excel_uploader
-    tag: "v1.0.0"
+    tag: "v1.0.4"
   ingress:
     enabled: true
     hosts:
@@ -21,4 +21,11 @@ mongodb-chart:
       database: "flaskdb"
     persistence:
       storageClass: "ebs-csi-gp3"
+
+ingress-nginx:
+  controller:
+    replicaCount: 1
+    service:
+      type: LoadBalancer
+
 

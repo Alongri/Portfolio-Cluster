@@ -1,9 +1,12 @@
 dependencies:
-- name: mongodb-chart
-  repository: file://../mongodb-chart
-  version: 0.1.0
+- name: ingress-nginx
+  repository: https://kubernetes.github.io/ingress-nginx
+  version: 4.11.3
 - name: flask-app
   repository: file://../flask-app
   version: 0.1.0
-digest: sha256:62e2dbc1aa21b15edfb4d6b4111387f82eb3742ae3524c6d837b467dddbc40af
-generated: "2025-08-29T13:23:00.518179728+03:00"
+- name: mongodb-chart
+  repository: file://../mongodb-chart
+  version: 0.1.0
+digest: sha256:0cc7c74a84d07fc839b3e5358f732a620069c04f15cacd1aed34a829f586ede4
+generated: "2025-08-31T10:36:59.089418691+03:00"

@@ -2,11 +2,11 @@ replicaCount: 2
 
 image:
   repository: 884394270539.dkr.ecr.ap-south-1.amazonaws.com/development/excel_uploader
-  tag: v1.0.0
+  tag: v1.0.4
   pullPolicy: IfNotPresent
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 5000
 
 resources: {}
@@ -28,14 +28,14 @@ ingress:
 livenessProbe:
   httpGet:
     path: /health
-    port: 80
+    port: 5000
   initialDelaySeconds: 30
   periodSeconds: 10
 
 readinessProbe:
   httpGet:
     path: /health
-    port: 80
+    port: 5000
   initialDelaySeconds: 10
   periodSeconds: 5
 
