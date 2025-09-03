@@ -12,9 +12,11 @@ service:
 resources: {}
 
 env:
-  MONGO_HOST: "portfolio-mongodb-chart-mongodb"
+  MONGO_HOST: "portfolio-umbrella-mongodb-headless"
   MONGO_PORT: 27017
-  MONGO_DB: "flaskdb"
+  ROOT_USERNAME: "admin"
+  ROOT_PASSWORD: "MyRootPassword123"
+  MONGO_DB: "excel_db"
 
 ingress:
   enabled: true
