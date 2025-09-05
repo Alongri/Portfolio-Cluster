@@ -8,24 +8,28 @@ flask-app:
   image:
     repository: 884394270539.dkr.ecr.ap-south-1.amazonaws.com/development/excel_uploader
     tag: "v1.0.4"
+  service:
+    type: ClusterIP
+    port: 5000  
   ingress:
-    enabled: true
-    hosts:
-      - host: myportfolio.dbloader.com
-        paths:
-          - path: /
-            pathType: Prefix
-
+  enabled: true
+  hosts:
+    - host: ""
+      paths:
+        - path: /
+          pathType: Prefix
 
 mongodb-chart:
   mongodb:
     auth:
-      rootPassword: "MyRootPassword123"
-      username: "admin"
-      password: "admin123"
-      database: "excel_db"
+      rootPassword: "MyRootPassword123"  
+      username: ""                         
+      password: ""                         
+      database: ""                         
     persistence:
       storageClass: "ebs-csi-gp3"
+
+
 
 ingress-nginx:
   controller:

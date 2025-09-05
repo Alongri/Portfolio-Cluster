@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 5000
 
 resources: {}
@@ -14,18 +14,18 @@ resources: {}
 env:
   MONGO_HOST: "portfolio-umbrella-mongodb-headless"
   MONGO_PORT: 27017
-  ROOT_USERNAME: "admin"
+  ROOT_USERNAME: "root"
   ROOT_PASSWORD: "MyRootPassword123"
   MONGO_DB: "excel_db"
 
 ingress:
   enabled: true
+  ingressClassName: nginx
   hosts:
-    - host: myportfolio.dbloader.com
+    - host: "" 
       paths:
         - path: /
           pathType: Prefix
-  ingressClassName: nginx
 
 livenessProbe:
   httpGet:
@@ -40,5 +40,3 @@ readinessProbe:
     port: 5000
   initialDelaySeconds: 10
   periodSeconds: 5
-
-

@@ -2,11 +2,10 @@ mongodb:
   architecture: replicaset
   auth:
     enabled: true
-    rootPassword: "MyRootPassword123"
-    username: "admin"
-    password: "admin123"
-    database: "excel_db"
+    rootPassword: "MyRootPassword123"  
+    username: ""                         
+    password: ""                         
+    database: ""                         
   persistence:
     size: 8Gi
     storageClass: "ebs-csi-gp3"
-
